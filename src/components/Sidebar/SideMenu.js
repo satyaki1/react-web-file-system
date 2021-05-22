@@ -10,14 +10,15 @@ const SideMenu = ({ fileStructure }) => {
   const location = useLocation();
   const fileStructureTree = generateTreeFromList(fileStructure);
   const children = fileStructureTree[0].children;
-  const handler = (children, value) => {
 
+  const handler = (children, value) => {
     let i = value + 1;
     return children && children.length > 0
       ? children.map((entry) => {
           entry = fileStructure[entry]
           if (entry.type == FILE) return;
-          const flag = entry.children ? (entry.children.length ? true : false) : false;
+          const flag = entry.children ?.length ? true : false;
+
           if (!flag) {
             return (
               <LinkContainer
@@ -31,6 +32,7 @@ const SideMenu = ({ fileStructure }) => {
               </LinkContainer>
             );
           }
+
           return (
             <Collapse index={i} key={entry.path}>
               {(visible, handleVisible) => {

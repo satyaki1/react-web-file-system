@@ -39,7 +39,6 @@ export const Root = styled.div`
 `;
 
 export const LinkContainer = styled.div`
-  width: 100%;
   position: relative;
   padding: 7px 32px;
   font-family: Lato, sans-serif;
