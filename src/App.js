@@ -7,9 +7,10 @@ import reducers from "./reducers";
 import generateFileSystem from "./utils/defaultFileSystem";
 import Navigation from "./components/Navigation";
 import SearchBar from "./components/SearchBar";
-import "./App.css";
-import styled from "styled-components";
 import Sidebar from "./components/Sidebar";
+import System from "./components/System";
+import styled from "styled-components";
+import "./App.css";
 
 const store = createStore(reducers, {
   fileSystem:
@@ -21,20 +22,18 @@ const store = createStore(reducers, {
 function App() {
   return (
     <Provider store={store}>
-      {/* <Router> */}
-        <BrowserRouter>
-          <Fragment>
-            <Sidebar></Sidebar>
-            <Container>
-              <TopBar>
-                <Navigation />
-                <SearchBar />
-              </TopBar>
-              {/* <Route path="*" component={Grid} /> */}
-            </Container>
-          </Fragment>
-        </BrowserRouter>
-      {/* </Router> */}
+      <BrowserRouter>
+        <Fragment>
+          <Sidebar />
+          <Container>
+            <TopBar>
+              <Navigation />
+              <SearchBar />
+            </TopBar>
+            <Route path="*" component={System} />
+          </Container>
+        </Fragment>
+      </BrowserRouter>
     </Provider>
   );
 }
@@ -52,6 +51,5 @@ const Container = styled.div`
 const TopBar = styled.div`
   display: flex;
 `;
-
 
 export default App;
