@@ -100,7 +100,7 @@ export const entriesAreSame = (x, y) => {
     if (!entriesAreSame(x[p], y[p])) {
       return false;
     }
-  } else if (x[p] != y[p]) return false;
+  } else if (x[p] !== y[p]) return false;
 
   return true;
 };

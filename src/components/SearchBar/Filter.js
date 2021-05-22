@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { GLOBAL, LOCAL } from "../../utils/constants";
 import { FilterContainer } from "./styles";
 

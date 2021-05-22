@@ -9,14 +9,14 @@ const showPath = (path) => {
   const len = pathArr.length;
   const arr = [<span key={0}>{` root `}</span>];
 
-  pathArr.map((p, _) => {
-    _ === len - 1
+  pathArr.forEach((p, pathIndex) => {
+    pathIndex === len - 1
       ? arr.push(
-          <span className="currentPath" key={_ + 1}>
+          <span className="currentPath" key={pathIndex + 1}>
             / {p}
           </span>
         )
-      : arr.push(<span key={_ + 1}>{` / ${p} `}</span>);
+      : arr.push(<span key={pathIndex + 1}>{` / ${p} `}</span>);
   });
   return arr;
 };

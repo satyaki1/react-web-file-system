@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from 'react';
+import React, { Component, createRef } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MagnifyIcon from './MagnifyIcon';

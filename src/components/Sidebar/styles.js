@@ -1,4 +1,4 @@
-import styled, { className } from "styled-components";
+import styled from "styled-components";
 
 export const SideBarContainer = styled.section`
   background: #f9fafc;

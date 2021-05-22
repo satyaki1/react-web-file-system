@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router";
 import { FILE } from "../../utils/constants";
 import { generateTreeFromList } from "../../utils/fileSystem";
 import Collapse from "./Collapse";
-import { LinkContainer, DropDownIcon, Line } from "./styles";
+import { LinkContainer, DropDownIcon } from "./styles";
 
 const SideMenu = ({ fileStructure }) => {
   const history = useHistory();
@@ -15,9 +15,9 @@ const SideMenu = ({ fileStructure }) => {
     let i = value + 1;
     return children && children.length > 0
       ? children.map((entry) => {
-          entry = fileStructure[entry]
-          if (entry.type == FILE) return;
-          const flag = entry.children ?.length ? true : false;
+          entry = fileStructure[entry];
+          if (entry.type === FILE) return <></>;
+          const flag = entry.children?.length ? true : false;
 
           if (!flag) {
             return (

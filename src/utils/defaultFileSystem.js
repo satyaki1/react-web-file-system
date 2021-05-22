@@ -1,6 +1,8 @@
+import { FILE, FOLDER } from "./constants";
+
 export const defaultFileSystem = {
   0: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "root",
     path: "/",
     size: 0,
@@ -11,7 +13,7 @@ export const defaultFileSystem = {
     children: [1, 2, 3, 4, 5, 6],
   },
   1: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "apps",
     creatorName: "Satyaki",
     size: 223,
@@ -22,7 +24,7 @@ export const defaultFileSystem = {
     children: [],
   },
   2: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "pictures",
     creatorName: "Satyaki",
     size: 23,
@@ -33,7 +35,7 @@ export const defaultFileSystem = {
     children: [],
   },
   3: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "videos",
     creatorName: "Satyaki",
     size: 0,
@@ -44,7 +46,7 @@ export const defaultFileSystem = {
     children: [],
   },
   4: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "docs",
     creatorName: "Satyaki",
     size: 233,
@@ -55,7 +57,7 @@ export const defaultFileSystem = {
     children: [7, 8, 9],
   },
   5: {
-    type: "FILE",
+    type: FILE,
     name: "a.pdf",
     creatorName: "Satyaki",
     size: 234,
@@ -65,7 +67,7 @@ export const defaultFileSystem = {
     path: "/a.pdf",
   },
   6: {
-    type: "FILE",
+    type: FILE,
     name: "b.jpg",
     creatorName: "Satyaki",
     size: 234,
@@ -75,7 +77,7 @@ export const defaultFileSystem = {
     path: "/b.jpg",
   },
   7: {
-    type: "FOLDER",
+    type: FOLDER,
     name: "work",
     creatorName: "Satyaki",
     size: 200,
@@ -86,7 +88,7 @@ export const defaultFileSystem = {
     children: [10, 11],
   },
   8: {
-    type: "FILE",
+    type: FILE,
     name: "c.pdf",
     creatorName: "Satyaki",
     size: 200,
@@ -96,7 +98,7 @@ export const defaultFileSystem = {
     path: "/docs/c.pdf",
   },
   9: {
-    type: "FILE",
+    type: FILE,
     name: "d.docx",
     creatorName: "Satyaki",
     size: 235,
@@ -106,7 +108,7 @@ export const defaultFileSystem = {
     path: "/docs/d.docx",
   },
   10: {
-    type: "FILE",
+    type: FILE,
     name: "e.pdf",
     creatorName: "Satyaki",
     size: 0,
@@ -116,7 +118,7 @@ export const defaultFileSystem = {
     path: "/docs/work/e.pdf",
   },
   11: {
-    type: "FILE",
+    type: FILE,
     name: "f.ts",
     creatorName: "Satyaki",
     size: 235,

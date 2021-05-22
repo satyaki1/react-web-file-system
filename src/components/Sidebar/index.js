@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideMenu from "./SideMenu";
 import { useSelector } from "react-redux";
-import { generateTreeFromList } from "../../utils/fileSystem";
-
 import { SideBarContainer, Root, ShowMenu } from "./styles";
 
 const Sidebar = () => {

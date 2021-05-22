@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { useHistory } from "react-router";
 import FileIcon from "../../assets/img/file.png";
 import FolderIcon from "../../assets/img/folder.png";
@@ -21,7 +21,7 @@ const SearchResults = ({ data, term, closeResult }) => {
         data.map((arr) => (
           <Result key={arr.path} onClick={() => handleClick(arr)}>
             <div>
-              <Img src={arr.type == FILE ? FileIcon : FolderIcon} />
+              <Img src={arr.type === FILE ? FileIcon : FolderIcon} />
               {arr.name}
             </div>
 
