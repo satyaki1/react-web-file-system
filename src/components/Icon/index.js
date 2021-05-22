@@ -9,7 +9,7 @@ import FileInfo from "../FileInfo";
 
 const Icon = ({ entry, deleteFn }) => {
   const history = useHistory();
-  const nodeRef = useRef();
+  const _ref = useRef();
   const [context, setContext] = useState({
     visible: false,
     showInfo: false,
@@ -26,7 +26,6 @@ const Icon = ({ entry, deleteFn }) => {
         entry.type === FOLDER
           ? history.push(entry.path)
           : setContext({
-              ...context,
               showInfo: true,
             });
       },
@@ -35,7 +34,6 @@ const Icon = ({ entry, deleteFn }) => {
       info: "Get Info",
       onClick: () =>
         setContext({
-          ...context,
           showInfo: true,
         }),
     },
@@ -46,7 +44,7 @@ const Icon = ({ entry, deleteFn }) => {
         handleDelete();
       },
     },
-  ]
+  ];
   let ext = entry.name.split(".").filter((el) => el);
   ext = ext.length >= 2 ? ext[ext.length - 1] : "";
 
@@ -63,18 +61,29 @@ const Icon = ({ entry, deleteFn }) => {
   const _handleContextMenu = (event) => {
     event.preventDefault();
     const path = event.composedPath();
-    console.log("path", path)
-    console.log("noderef", nodeRef.current)
-    const wasOutside = !path.includes(nodeRef.current) || false;
-    console.log(wasOutside)
+    const wasOutside = !path.includes(_ref.current) || false;
 
+    if (wasOutside) {
+      setContext({
+        visible: false,
+        style: {
+          right: 0,
+          left: 0,
+        },
+        previousValue: {
+          right: 0,
+          left: 0,
+        },
+      });
+      return;
+    }
 
     const clickX = event.clientX;
     const clickY = event.clientY;
     const screenW = window.innerWidth;
     const screenH = window.innerHeight;
-    const rootW = nodeRef.current.offsetWidth;
-    const rootH = nodeRef.current.offsetHeight;
+    const rootW = _ref.current.offsetWidth;
+    const rootH = _ref.current.offsetHeight;
 
     const right = screenW - clickX > rootW;
     const left = !right;
@@ -108,7 +117,6 @@ const Icon = ({ entry, deleteFn }) => {
     };
 
     setContext({
-      ...context,
       style,
       visible: true,
       prevStyle,
@@ -116,11 +124,11 @@ const Icon = ({ entry, deleteFn }) => {
   };
 
   const _handleMouseLeave = (event) => {
-    const wasOutside = !(event.target.contains === nodeRef.current);
+    const { visible } = context;
+    const wasOutside = !(event.target.contains === _ref.current);
 
-    if (wasOutside && context.visible)
+    if (wasOutside && visible)
       setContext({
-        ...context,
         visible: false,
         style: {
           right: 0,
@@ -140,25 +148,19 @@ const Icon = ({ entry, deleteFn }) => {
   };
 
   return (
-    <Container ref={nodeRef}>
+    <Container ref={_ref}>
       <Logo onClick={() => enterFolder()}>
         <Img src={entry.type === FILE ? FileIcon : FolderIcon} />
         {entry.type === FILE ? <span>{`.${ext}`}</span> : ""}
       </Logo>
       <Name>{entry.name}</Name>
-      {context.visible && (
-        <Menu
-          style={context.style}
-          content={menuItems}
-        />
-      )}
+      {context.visible && <Menu style={context.style} content={menuItems} />}
       {context.showInfo ? (
         <FileInfo
           title="File Info"
           style={context.prevStyle}
           closeFn={() =>
             setContext({
-              ...context,
               showInfo: false,
             })
           }

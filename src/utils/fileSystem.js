@@ -86,7 +86,7 @@ export const generateTreeFromList = (_list) => {
 
 export const showPathEntries = (parentPath, fileSystem) => {
   const index = getFileSystemId(parentPath, fileSystem);
-  return fileSystem[index] ? fileSystem[index].children.map((childrenID) => fileSystem[childrenID]) : [];
+  return fileSystem[index] ? fileSystem[index].children.filter((el) => fileSystem[el]).map((childrenID) => fileSystem[childrenID]) : [];
 };
 
 export const entriesAreSame = (x, y) => {

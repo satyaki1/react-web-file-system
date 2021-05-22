@@ -4,8 +4,9 @@ import { showPathEntries, entriesAreSame } from "../../utils/fileSystem";
 import { addEntry, deleteEntry } from "../../actions/fileSystem";
 import Icon from "../Icon";
 import { useHistory, useLocation } from "react-router";
-import { useSelector } from "react-redux";
-import { getFileSystemId} from "../../utils/common";
+import { useDispatch, useSelector } from "react-redux";
+import { getFileSystemId } from "../../utils/common";
+import Add from "../Add";
 
 const System = () => {
   const history = useHistory();
@@ -13,6 +14,7 @@ const System = () => {
   const fileSystem = useSelector((state) => state.fileSystem);
   const entry = showPathEntries(location.pathname, fileSystem);
   const pathId = getFileSystemId(location.pathname, fileSystem);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!Object.keys(fileSystem).includes(pathId)) {
@@ -20,18 +22,26 @@ const System = () => {
     }
   }, []);
 
+  const deleteEntryFromSystem = (entry) => {
+    dispatch(deleteEntry(getFileSystemId(entry.path, fileSystem)));
+  };
+
+  const saveNewlyAddedDetails = (value) => {
+    dispatch(
+      addEntry({
+        ...value,
+        parentID: pathId,
+        parentPath: location.pathname,
+      })
+    );
+  };
+
   return (
     <Container>
       {entry.map((entry, _) => (
-        <Icon
-          entry={entry}
-          index={_}
-          key={`${entry.path}_${entry.type}`}
-          deleteFn={() => {
-            deleteEntry(getFileSystemId(location.pathname, fileSystem));
-          }}
-        />
+        <Icon entry={entry} index={_} key={`${entry.path}_${entry.type}`} deleteFn={() => deleteEntryFromSystem(entry)} />
       ))}
+      <Add saveEntry={(value) => saveNewlyAddedDetails(value)} />
     </Container>
   );
 };

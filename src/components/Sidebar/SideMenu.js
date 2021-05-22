@@ -16,49 +16,52 @@ const SideMenu = ({ fileStructure }) => {
     return children && children.length > 0
       ? children.map((entry) => {
           entry = fileStructure[entry];
-          if (entry.type === FILE) return null;
-          const flag = entry.children?.length ? true : false;
+          if (entry) {
+            if (entry?.type === FILE) return null;
+            const flag = entry?.children?.length ? true : false;
 
-          if (!flag) {
+            if (!flag) {
+              return (
+                <LinkContainer
+                  key={entry.path}
+                  onClick={() => history.push(entry.path)}
+                  className={location.pathname === entry.path ? "selected" : ""}
+                >
+                  <div className="link" style={{ marginLeft: `${10 * i}px` }}>
+                    {entry.name}
+                  </div>
+                </LinkContainer>
+              );
+            }
+
             return (
-              <LinkContainer
-                key={entry.path}
-                onClick={() => history.push(entry.path)}
-                className={location.pathname === entry.path ? "selected" : ""}
-              >
-                <div className="link" style={{ marginLeft: `${10 * i}px` }}>
-                  {entry.name}
-                </div>
-              </LinkContainer>
+              <Collapse index={i} key={entry.path}>
+                {(visible, handleVisible) => {
+                  return (
+                    <Fragment>
+                      <LinkContainer key={entry.path} className={location.pathname === entry.path ? "selected" : ""}>
+                        <div
+                          className="link"
+                          style={{
+                            marginLeft: `${10 * i}px`,
+                            width: "100%",
+                          }}
+                          onClick={() => history.push(entry.path)}
+                        >
+                          {entry.name}
+                        </div>
+                        <div className="dropdown" onClick={() => handleVisible()}>
+                          <DropDownIcon className={visible ? "" : "clicked"} />
+                        </div>
+                      </LinkContainer>
+                      <div style={{ position: "relative" }}>{visible ? handler(entry.children, i) : ""}</div>
+                    </Fragment>
+                  );
+                }}
+              </Collapse>
             );
           }
-
-          return (
-            <Collapse index={i} key={entry.path}>
-              {(visible, handleVisible) => {
-                return (
-                  <Fragment>
-                    <LinkContainer key={entry.path} className={location.pathname === entry.path ? "selected" : ""}>
-                      <div
-                        className="link"
-                        style={{
-                          marginLeft: `${10 * i}px`,
-                          width: "100%",
-                        }}
-                        onClick={() => history.push(entry.path)}
-                      >
-                        {entry.name}
-                      </div>
-                      <div className="dropdown" onClick={() => handleVisible()}>
-                        <DropDownIcon className={visible ? "" : "clicked"} />
-                      </div>
-                    </LinkContainer>
-                    <div style={{ position: "relative" }}>{visible ? handler(entry.children, i) : ""}</div>
-                  </Fragment>
-                );
-              }}
-            </Collapse>
-          );
+          return null;
         })
       : "";
   };
