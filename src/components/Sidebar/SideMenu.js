@@ -16,7 +16,7 @@ const SideMenu = ({ fileStructure }) => {
     return children && children.length > 0
       ? children.map((entry) => {
           entry = fileStructure[entry];
-          if (entry.type === FILE) return <></>;
+          if (entry.type === FILE) return null;
           const flag = entry.children?.length ? true : false;
 
           if (!flag) {

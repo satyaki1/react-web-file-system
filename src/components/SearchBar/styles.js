@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: absolute;
   left: -1px;
   top: 33px;
+  width: 100%;
   z-index: 2000;
   background: #ffffff;
   border: 1px solid rgba(221, 224, 228, 0.7);
@@ -70,6 +71,7 @@ export const Result = styled.div`
   max-height: 100px;
   justify-content: space-between;
   border-bottom: 2px solid rgba(238, 239, 241, 0.5);
+  cursor: pointer;
   &:hover {
     background: #eeeff1;
   }
