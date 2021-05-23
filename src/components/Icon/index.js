@@ -45,6 +45,7 @@ const Icon = ({ entry, deleteFn }) => {
       },
     },
   ];
+
   let ext = entry.name.split(".").filter((el) => el);
   ext = ext.length >= 2 ? ext[ext.length - 1] : "";
 
@@ -124,10 +125,9 @@ const Icon = ({ entry, deleteFn }) => {
   };
 
   const _handleMouseLeave = (event) => {
-    const { visible } = context;
-    const wasOutside = !(event.target.contains === _ref.current);
+    const wasOutside = event.target.contains(_ref.current);
 
-    if (wasOutside && visible)
+    if (wasOutside)
       setContext({
         visible: false,
         style: {
