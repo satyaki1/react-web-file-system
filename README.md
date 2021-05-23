@@ -2,6 +2,18 @@
 
 A project to mimic the file system with option to create and delete.
 
+## Setting Up
+
+#### Pre-requisite
+
+Please make sure your machine has following bare minimum necessary items installed before executing the project.
+- Node (Minimum version: v10)
+- Yarn
+
+#### Setup Command
+- `yarn install`
+This will install all the dependencies in your local file system.
+
 ## Available Scripts
 
 In the project directory, you can run:
