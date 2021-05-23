@@ -39,7 +39,12 @@ const System = () => {
   return (
     <Container>
       {entry.map((entry, _) => (
-        <Icon entry={entry} index={_} key={`${entry.path}_${entry.type}`} deleteFn={() => deleteEntryFromSystem(entry)} />
+        <Icon
+          entry={entry}
+          index={_}
+          key={`${entry.path}_${entry.type}`}
+          deleteFn={() => deleteEntryFromSystem(entry)}
+        />
       ))}
       <Add saveEntry={(value) => saveNewlyAddedDetails(value)} />
     </Container>

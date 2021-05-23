@@ -6,7 +6,7 @@ const Add = (props) => {
   const [open, handleOpen] = useState(false);
   return (
     <Fragment>
-      <Container onClick={() => handleOpen(true)}>+</Container>
+      <Container data-testid="add-new" onClick={() => handleOpen(true)}>+</Container>
       {open ? (
         <CreateNew
           title="Create New"
@@ -23,7 +23,7 @@ const Add = (props) => {
 export default Add;
 
 const Container = styled.div`
-  height: 109px;
+  height: 117px;
   width: 96px;
   border: 3px dashed #dee0e4;
   display: flex;
@@ -32,6 +32,6 @@ const Container = styled.div`
   align-items: center;
   font-size: 30px;
   color: #dee0e4;
-  margin: -6px 21px;
+  margin: 0px 21px;
   cursor: copy;
 `;

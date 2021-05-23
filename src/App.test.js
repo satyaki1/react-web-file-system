@@ -1,8 +1,25 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("<App/>", () => {
+  test("renders root option", () => {
+    render(<App />);
+    const rootElement = screen.getByText(/root/i);
+    expect(rootElement).toBeInTheDocument();
+  });
+
+  test("renders search bar", () => {
+    const { queryByTestId } = render(<App />);
+    expect(queryByTestId(/searchbar/g)).toBeTruthy();
+  });
+
+  test("renders navigation", () => {
+    const { queryByTestId } = render(<App />);
+    expect(queryByTestId(/navigation/g)).toBeTruthy();
+  });
+
+  test("renders add new file or folder component", () => {
+    const { queryByTestId } = render(<App />);
+    expect(queryByTestId(/add-new/g)).toBeTruthy();
+  });
 });

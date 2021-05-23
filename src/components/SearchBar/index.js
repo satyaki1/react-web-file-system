@@ -30,7 +30,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Input placeholder="Search your file system" ref={_ref}>
+    <Input placeholder="Search your file system" ref={_ref} data-testid="searchbar">
       <MagnifyIcon
         fill="#545B61"
         style={{

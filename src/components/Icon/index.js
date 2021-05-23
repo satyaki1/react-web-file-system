@@ -148,7 +148,7 @@ const Icon = ({ entry, deleteFn }) => {
   };
 
   return (
-    <Container ref={_ref}>
+    <Container ref={_ref} data-testid="entries">
       <Logo onClick={() => enterFolder()}>
         <Img src={entry.type === FILE ? FileIcon : FolderIcon} />
         {entry.type === FILE ? <span>{`.${ext}`}</span> : ""}

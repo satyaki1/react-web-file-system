@@ -39,7 +39,7 @@ const Navigation = () => {
   const location = useLocation();
   const history = useHistory();
   return (
-    <Container>
+    <Container data-testid="navigation">
       <div style={{ marginTop: -2, cursor: "pointer" }} onClick={() => updateRoute(location, history)}>
         <GoBack fill={location.pathname === "/" ? "#acb9c3" : "#545B61"} />
       </div>
