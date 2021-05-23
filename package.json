@@ -2,6 +2,10 @@
   "name": "react-web-file-system",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Satyaki Chatterjee"
+  },
+  "license": "MIT",
   "homepage": "https://satyaki1.github.io/react-web-file-system",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
