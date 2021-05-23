@@ -5,7 +5,7 @@ const search = (arr, entry) => {
   let no = 0;
 
   arr[entry.parentID].children.forEach((elementId) => {
-    if (arr[elementId].name.includes(entry.name) && arr[elementId].type === entry.type) {
+    if (arr[elementId] && arr[elementId].name.includes(entry.name) && arr[elementId].type === entry.type) {
       console.log(elementId);
       no++;
     }

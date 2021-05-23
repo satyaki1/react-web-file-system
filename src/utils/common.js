@@ -1,7 +1,7 @@
 export const getNewItemId = () => {
   const fileSystemJSON = localStorage.getItem("fileSystem") ?? {};
   const allFileIndexes = Object.keys(JSON.parse(fileSystemJSON));
-  return allFileIndexes[allFileIndexes.length - 1] + 1;
+  return parseInt(allFileIndexes[allFileIndexes.length - 1] ?? 0) + 1;
 };
 
 export const getFileSystemId = (path, fileSystem) => {
