@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { showPathEntries, entriesAreSame } from "../../utils/fileSystem";
+import { showPathEntries } from "../../utils/fileSystem";
 import { addEntry, deleteEntry } from "../../actions/fileSystem";
 import Icon from "../Icon";
 import { useHistory, useLocation } from "react-router";

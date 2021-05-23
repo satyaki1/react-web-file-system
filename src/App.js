@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Provider } from "react-redux";
-import { Route, Router } from "react-router";
+import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import reducers from "./reducers";
@@ -23,16 +23,14 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Fragment>
-          <Sidebar />
-          <Container>
-            <TopBar>
-              <Navigation />
-              <SearchBar />
-            </TopBar>
-            <Route path="*" component={System} />
-          </Container>
-        </Fragment>
+        <Sidebar />
+        <Container>
+          <TopBar>
+            <Navigation />
+            <SearchBar />
+          </TopBar>
+          <Route path="*" component={System} />
+        </Container>
       </BrowserRouter>
     </Provider>
   );

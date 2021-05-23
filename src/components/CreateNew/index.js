@@ -4,7 +4,7 @@ import { Container, Error, Top, Toggle, Form } from "./styles";
 import { format } from "date-fns";
 import Modal from "../../elements/Modal";
 
-const FileInfo = ({ title, addEntry, closeFn }) => {
+const CreateNew = ({ title, addEntry, closeFn }) => {
   const [type, handleType] = useState(FILE);
   const [item, setItem] = useState({
     name: "",
@@ -122,4 +122,4 @@ const FileInfo = ({ title, addEntry, closeFn }) => {
   );
 };
 
-export default FileInfo;
+export default CreateNew;
