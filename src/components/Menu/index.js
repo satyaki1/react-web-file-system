@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
+import React from "react";
+import styled from "styled-components";
 
-import styled from 'styled-components';
+const Menu = ({ content, style }) => {
+  return (
+    <Container style={style}>
+      {content.map((c) => (
+        <div key={c.info} className="content" style={c.style} onClick={c.onClick}>
+          {c.info}
+        </div>
+      ))}
+    </Container>
+  );
+};
 
-export default class Menu extends Component {
-  render() {
-    return (
-      <Container style={this.props.style}>
-        {this.props.content.map(c => (
-          <div
-            key={c.info}
-            className="content"
-            style={c.style}
-            onClick={c.onClick}
-          >
-            {c.info}
-          </div>
-        ))}
-      </Container>
-    );
-  }
-}
+export default Menu;
 
 const Container = styled.div`
   position: absolute;
